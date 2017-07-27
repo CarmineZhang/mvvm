@@ -12,6 +12,7 @@
         <p style="color:red" :text="str"></p>
         <p>{{someStr}}</p>
         <p :text="child.other"></p>
+        <p :text="cstr"></p>
         <button @click="clickBtn">change model</button>
     </div>
     <script src="./observer.js"></script>
@@ -27,6 +28,11 @@
             someStr: 'hello ',
             child:{
                 other:'world'
+            }
+        },
+        computed:{
+            cstr:function(){
+                return this.str+this.someStr
             }
         },
         methods: {
