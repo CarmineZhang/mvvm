@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>MVVM</title>
+</head>
+
+<body>
+    <div id="mvvm-app">
+        <input type="text" name="" :model="str">
+        <p style="color:red" :text="str"></p>
+        <p>{{someStr}}</p>
+        <p :text="child.other"></p>
+        <button @click="clickBtn">change model</button>
+    </div>
+    <script src="./observer.js"></script>
+    <script src="./dep.js"></script>
+    <script src="./watcher.js"></script>
+    <script src="./compile.js"></script>
+    <script src="./mvvm.js"></script>
+    <script>
+    var vm = new Mvvm({
+        el: '#mvvm-app',
+        data: {
+            str:'hello world',
+            someStr: 'hello ',
+            child:{
+                other:'world'
+            }
+        },
+        methods: {
+            clickBtn: function(e) {
+                this.someStr='world'
+                this.child.other='hello'
+            }
+        }
+    });
+    </script>
+</body>
+
+</html>
